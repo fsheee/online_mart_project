@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package user;
+
+// Message representing a user.
+message User {
+    int32 user_id = 1; 
+    string username = 2;
+    string email = 3;
+    string hashed_password = 4; 
+}
+
+// Message for registering a new user.
+message RegisterUser {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+}
+
+// Message for JWT token response.
+message Token {
+    string access_token = 1;
+    string token_type = 2;
+}
+
+// Message for token data.
+message TokenData {
+    string username = 1; 
+}
+
+// Message for updating user details.
+message UserUpdate {
+    string email = 1; 
+    string password = 2; 
+}
+
+// Message representing a refresh token.
+message RefreshToken {
+    int32 id = 1; 
+    int32 user_id = 2; 
+    string token = 3;
+    string expires_at = 4; 
+}
+
+// Message for refreshing a token.
+message RefreshTokenRequest {
+    string refresh_token = 1;
+}
+
+// Response message after login, containing access and refresh tokens.
+message LoginResponse {
+    string access_token = 1;
+    string token_type = 2;
+    string refresh_token = 3;
+}
+
+// Message for holding refresh token data.
+message RefreshTokenData {
+    string email = 1;
+}
+
+// Message for getting all user details in response.
+message UserAll {
+    string username = 1;
+    string email = 2;
+    int32 user_id = 3;
+}

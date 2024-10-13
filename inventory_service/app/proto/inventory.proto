@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package inventory;
+
+// Inventory message definition
+message Inventory {
+    int32 id = 1;
+    int32 product_id = 2;
+    int32 quantity = 3;
+    string status_stock = 4;
+}
+
+// Message for creating new inventory
+message InventoryCreate {
+    int32 product_id = 1;
+    int32 quantity = 2;
+    string status_stock = 3;
+}
+
+// Message for updating inventory
+message InventoryUpdate {
+    int32 quantity = 1;
+    string stock_status = 2;
+}
+
+// Response message for inventory details
+message InventoryResponse {
+    int32 id = 1;
+    int32 product_id = 2;
+    int32 quantity = 3;
+    string status_stock = 4;
+}
+
+// Inventory-related operations
+enum InventoryOperationType {
+    CREATE = 0;
+    UPDATE = 1;
+    DELETE = 2;
+    GET = 3;
+}
+
+
+message InventoryOperation {
+    InventoryOperationType operation_type = 1;
+    oneof inventory_data {
+        Inventory inventory = 2;
+        InventoryCreate inventory_create = 3;
+        InventoryUpdate inventory_update = 4;
+        int32 product_id = 5;  // For deletion or querying by ID
+    }
+}

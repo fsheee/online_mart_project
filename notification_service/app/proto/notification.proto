@@ -1,0 +1,25 @@
+
+syntax = "proto3";
+
+package notification;
+
+// order update
+message OrderUpdate {
+    string order_id = 1;
+    string user_id = 2;
+    string order_status = 3;
+}
+
+// user data
+message User {
+    string id = 1;
+    string email = 2;
+}
+
+// msg to kafka
+message NotificationMessage {
+    oneof message_type {
+        OrderUpdate order_update = 1;
+        User user = 2;
+    }
+}

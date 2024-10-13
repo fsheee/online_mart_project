@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+// Message for Order
+message Order {
+    int32 id = 1;                          
+    int32 user_id = 2;                     
+    int32 product_id = 3;                  
+    string product_name = 4;               
+    int32 quantity = 5;                    
+    string shipping_address = 6;           
+    string status = 7;                     
+    string created_at = 8;                 
+    string updated_at = 9;                 
+    float total_price = 10;  // New field for total price
+}
+
+// MessageType Enum for Action Types
+enum MessageType {
+    CREATE_ORDER = 0;
+    UPDATE_ORDER = 1;
+    DELETE_ORDER = 2;
+    GET_ORDER = 3;
+}
+
+// processing and consuming events
+message OrderMessage {
+    MessageType action = 1;
+    Order order_data = 2;
+    int32 order_id = 3; // Used for delete action
+}
