@@ -107,7 +107,7 @@ services:
       - '5446:5432'
     volumes:
       - shop_db:/var/lib/postgresql/data
-    # mainey exposed port use kya hai but may be jo internal port right hand side wala daalna parey wese to localhost uthana chahye tha but i think config issue tha    
+    
 
   user2_service:
     build:
